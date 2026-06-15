@@ -65,43 +65,43 @@ function CatalogContent() {
     <div className="container mx-auto px-6 py-12">
       {/* Title Header */}
       <div className="mb-10 text-left">
-        <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-3 tracking-tight">
-          Workspace <span className="text-gradient">Gear Collection</span>
+        <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-2 tracking-tight uppercase">
+          comfeSpace <span className="text-brand-blue">Catalog</span>
         </h1>
-        <p className="text-text-gray max-w-lg">
-          High-performance tactical instruments and aesthetic furniture to perfect your workspace ergonomics.
+        <p className="text-text-gray text-xs max-w-lg">
+          Precision-milled modular fixtures, monitor lighting bars, and leather organizers structured for deep desktop concentration.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Left column: Filtering panel */}
         <div className="lg:col-span-1 space-y-6">
-          <div className="card glass-card p-6 sticky top-[100px]">
-            <h3 className="font-title font-bold text-lg text-white mb-5 pb-3 border-b border-white/5 flex items-center justify-between">
-              Filter Panel
+          <div className="card glass-card p-5 sticky top-[100px] rounded">
+            <h3 className="font-sans font-bold text-xs uppercase tracking-wider text-white mb-4 pb-2 border-b border-white/5 flex items-center justify-between">
+              Filters
               {(search || selectedCategory !== "All" || minPrice || maxPrice || sortBy !== "default") && (
                 <button
                   onClick={handleClearFilters}
-                  className="text-xs text-brand-purple hover:underline cursor-pointer"
+                  className="text-[10px] font-bold text-brand-blue hover:underline cursor-pointer lowercase"
                 >
-                  Reset
+                  [reset]
                 </button>
               )}
             </h3>
 
             {/* Search Input */}
-            <div className="form-group mb-5">
-              <label className="form-label text-xs uppercase tracking-wider text-text-gray">Search</label>
+            <div className="form-group mb-4">
+              <label className="form-label text-[10px]">Search keyword</label>
               <div className="relative">
                 <input
                   type="text"
                   placeholder="e.g. Keyboard..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="form-input text-sm pl-9"
+                  className="form-input text-xs pl-8"
                 />
                 <svg
-                  className="w-4 h-4 text-text-muted absolute left-3 top-1/2 transform -translate-y-1/2"
+                  className="w-3.5 h-3.5 text-text-muted absolute left-2.5 top-1/2 transform -translate-y-1/2"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -117,15 +117,15 @@ function CatalogContent() {
             </div>
 
             {/* Category Select */}
-            <div className="form-group mb-5">
-              <label className="form-label text-xs uppercase tracking-wider text-text-gray">Category</label>
+            <div className="form-group mb-4">
+              <label className="form-label text-[10px]">Category</label>
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="form-select text-sm cursor-pointer"
+                className="form-select text-xs cursor-pointer"
               >
                 {categories.map((cat) => (
-                  <option key={cat} value={cat} className="bg-bg-card">
+                  <option key={cat} value={cat} className="bg-bg-card text-xs">
                     {cat}
                   </option>
                 ))}
@@ -133,56 +133,56 @@ function CatalogContent() {
             </div>
 
             {/* Price Filter Min/Max */}
-            <div className="form-group mb-5">
-              <label className="form-label text-xs uppercase tracking-wider text-text-gray">Price Range ($)</label>
+            <div className="form-group mb-4">
+              <label className="form-label text-[10px]">Price Limits ($)</label>
               <div className="flex items-center gap-2">
                 <input
                   type="number"
                   placeholder="Min"
                   value={minPrice}
                   onChange={(e) => setMinPrice(e.target.value)}
-                  className="form-input text-sm"
+                  className="form-input text-xs"
                   min="0"
                 />
-                <span className="text-text-muted text-sm">-</span>
+                <span className="text-text-muted text-xs font-mono">-</span>
                 <input
                   type="number"
                   placeholder="Max"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(e.target.value)}
-                  className="form-input text-sm"
+                  className="form-input text-xs"
                   min="0"
                 />
               </div>
             </div>
 
             {/* Sort Filter */}
-            <div className="form-group mb-2">
-              <label className="form-label text-xs uppercase tracking-wider text-text-gray">Sort By</label>
+            <div className="form-group mb-1">
+              <label className="form-label text-[10px]">Sorting</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="form-select text-sm cursor-pointer"
+                className="form-select text-xs cursor-pointer"
               >
-                <option value="default" className="bg-bg-card">Recently Added</option>
-                <option value="price-asc" className="bg-bg-card">Price: Low to High</option>
-                <option value="price-desc" className="bg-bg-card">Price: High to Low</option>
-                <option value="newest" className="bg-bg-card">Newest Batches</option>
+                <option value="default" className="bg-bg-card text-xs">Default Logs</option>
+                <option value="price-asc" className="bg-bg-card text-xs">Price: Low to High</option>
+                <option value="price-desc" className="bg-bg-card text-xs">Price: High to Low</option>
+                <option value="newest" className="bg-bg-card text-xs">Batch Release Date</option>
               </select>
             </div>
           </div>
         </div>
 
         {/* Right column: Items grid */}
-        <div className="lg:col-span-3 space-y-6">
+        <div className="lg:col-span-3 space-y-4">
           {/* Count & Info */}
-          <div className="flex items-center justify-between text-sm text-text-gray px-1">
-            <p>
-              Showing <span className="font-semibold text-white">{filteredItems.length}</span>{" "}
-              {filteredItems.length === 1 ? "product" : "products"}
+          <div className="flex items-center justify-between text-xs text-text-gray px-1">
+            <p className="font-mono">
+              Found: <span className="font-bold text-white">{filteredItems.length}</span>{" "}
+              {filteredItems.length === 1 ? "unit" : "units"}
             </p>
             {selectedCategory !== "All" && (
-              <span className="badge badge-purple">{selectedCategory}</span>
+              <span className="badge badge-teal">{selectedCategory}</span>
             )}
           </div>
 
@@ -190,17 +190,17 @@ function CatalogContent() {
           {filteredItems.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredItems.map((item) => (
-                <div key={item.id} className="card glass-card flex flex-col h-full group animate-fade-in">
+                <div key={item.id} className="card glass-card flex flex-col h-full group p-4 rounded animate-fade-in">
                   {/* Image wrapper */}
-                  <div className="aspect-[4/3] rounded-lg overflow-hidden relative mb-5 border border-white/5 bg-bg-dark">
+                  <div className="aspect-[4/3] rounded-sm overflow-hidden relative mb-4 border border-white/10 bg-bg-dark">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.imageUrl}
                       alt={item.title}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover w-full h-full filter brightness-95"
                     />
-                    <div className="absolute top-2.5 right-2.5">
-                      <span className="badge badge-purple bg-bg-dark/80 backdrop-blur-md">
+                    <div className="absolute top-2 right-2">
+                      <span className="badge badge-purple bg-bg-dark/90 text-[9px] px-1.5 py-0.5 border border-white/5">
                         {item.category}
                       </span>
                     </div>
@@ -209,14 +209,14 @@ function CatalogContent() {
                   {/* Title & Price */}
                   <div className="flex-grow flex flex-col justify-between">
                     <div>
-                      <div className="flex items-start justify-between gap-2 mb-1.5">
-                        <h3 className="text-md font-bold text-white font-title group-hover:text-brand-purple transition-colors">
+                      <div className="flex items-start justify-between gap-2 mb-1">
+                        <h3 className="text-xs font-bold text-white uppercase tracking-wider font-sans group-hover:text-brand-blue transition-colors">
                           {item.title}
                         </h3>
-                        <span className="font-semibold text-brand-teal text-sm">${item.price}</span>
+                        <span className="font-semibold text-brand-blue text-xs font-mono">${item.price}</span>
                       </div>
                       {/* Short Description */}
-                      <p className="text-xs text-text-gray line-clamp-2 leading-relaxed mb-5">
+                      <p className="text-xs text-text-gray line-clamp-2 leading-relaxed mb-4">
                         {item.shortDescription}
                       </p>
                     </div>
@@ -224,7 +224,7 @@ function CatalogContent() {
                     {/* View Details Button */}
                     <Link
                       href={`/items/${item.id}`}
-                      className="btn btn-secondary text-xs text-center py-2 w-full hover:border-brand-purple/50 transition-colors"
+                      className="btn btn-secondary text-xs text-center py-2 w-full cursor-pointer"
                     >
                       View Details
                     </Link>
@@ -234,17 +234,17 @@ function CatalogContent() {
             </div>
           ) : (
             /* Empty State */
-            <div className="card glass-card p-12 text-center flex flex-col items-center justify-center min-h-[350px]">
-              <div className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-text-muted mb-4">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="card glass-card p-12 text-center flex flex-col items-center justify-center min-h-[300px] rounded">
+              <div className="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-text-muted mb-4">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">No gear matches search criteria</h3>
-              <p className="text-sm text-text-muted max-w-sm mb-6 leading-relaxed">
-                Adjust your filters, search term, or categories to discover other workspace accessories.
+              <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2">No matching products found</h3>
+              <p className="text-xs text-text-muted max-w-sm mb-6 leading-relaxed">
+                Adjust search queries or price limit inputs to find other workspace elements.
               </p>
-              <button onClick={handleClearFilters} className="btn btn-primary px-6 py-2 text-xs">
+              <button onClick={handleClearFilters} className="btn btn-primary px-5 py-2 text-xs font-bold cursor-pointer">
                 Clear Filters
               </button>
             </div>
@@ -260,9 +260,9 @@ export default function Items() {
     <Suspense
       fallback={
         <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4">
-          <div className="spinner text-brand-purple"></div>
-          <p className="text-sm text-text-gray animate-pulse font-title">
-            Loading Catalog Collection...
+          <div className="spinner text-brand-blue"></div>
+          <p className="text-xs text-text-gray animate-pulse font-mono uppercase tracking-widest">
+            Fetching Catalog...
           </p>
         </div>
       }

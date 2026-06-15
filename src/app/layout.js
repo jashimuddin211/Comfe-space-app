@@ -5,8 +5,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-  title: "Aura Space | Premium Workspace Accessories",
-  description: "Curated catalog of minimalist keyboards, monitor lights, desk pads, and premium workspace gear designed to elevate your focus.",
+  title: "comfeSpace | Industrial Workspace Catalog",
+  description: "Minimalist, high-performance workspace tools and accessories engineered for focus.",
 };
 
 export default function RootLayout({ children }) {

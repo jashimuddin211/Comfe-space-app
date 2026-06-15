@@ -1,28 +1,28 @@
 const DEFAULT_ITEMS = [
   {
-    id: "aura-keyboard-x",
-    title: "Aura Mechanical Keyboard",
+    id: "comfe-keyboard-x",
+    title: "comfe Mechanical Keyboard",
     category: "Keyboards",
     price: 189,
     shortDescription: "A custom 75% mechanical keyboard with hot-swappable switches, wireless connectivity, and custom walnut casing.",
-    fullDescription: "Crafted for enthusiasts and designers alike, the Aura Mechanical Keyboard blends mechanical perfection with natural beauty. Featuring a solid American Walnut casing, hot-swappable linear switches pre-lubed for silent typing, and custom-designed PBT dye-sub keycaps. Connect seamlessly with Bluetooth 5.1, 2.4Ghz wireless, or USB-C. Fully customizable RGB backlight gives a warm, ambient glow underneath your workspace.",
+    fullDescription: "Crafted for enthusiasts and professionals alike, the comfe Mechanical Keyboard blends mechanical perfection with clean, functional geometry. Featuring a solid American Walnut casing, hot-swappable linear switches pre-lubed for silent typing, and custom-designed PBT dye-sub keycaps. Connect seamlessly with Bluetooth 5.1, 2.4Ghz wireless, or USB-C. Fully customizable backlight gives a warm, ambient glow underneath your workspace.",
     specs: [
       "Layout: 75% ANSI layout",
       "Case Material: American Walnut & Anodized Aluminum",
-      "Switches: Aura Silent Linear (Pre-lubed)",
+      "Switches: comfe Silent Linear (Pre-lubed)",
       "Connectivity: Tri-Mode (Bluetooth, 2.4Ghz, Type-C)",
-      "Battery Life: Up to 150 hours (RGB off)"
+      "Battery Life: Up to 150 hours"
     ],
     imageUrl: "https://images.unsplash.com/photo-1618384887929-16ec33fab9ef?q=80&w=600&auto=format&fit=crop",
     dateAdded: "2026-05-01"
   },
   {
-    id: "luna-light-bar",
-    title: "Luna Monitor Light Bar",
+    id: "comfe-light-bar",
+    title: "comfe Monitor Light Bar",
     category: "Lighting",
     price: 79,
     shortDescription: "Asymmetrical screen-glare-free monitor light bar with wireless dial controller.",
-    fullDescription: "Illuminate your desk without washing out your display. The Luna Monitor Light Bar clips elegantly to the top of your monitor, throwing light downward in an asymmetrical pattern that avoids screen reflection. Comes with a wireless desktop dial controller to adjust brightness and color temperature (2700K - 6500K) with a simple turn.",
+    fullDescription: "Illuminate your desk without washing out your display. The comfe Monitor Light Bar clips elegantly to the top of your monitor, throwing light downward in an asymmetrical pattern that avoids screen reflection. Comes with a wireless desktop dial controller to adjust brightness and color temperature (2700K - 6500K) with a simple turn.",
     specs: [
       "Light Source: High-CRI LED (Ra > 95)",
       "Color Temp: 2700K - 6500K adjustable",
@@ -34,12 +34,12 @@ const DEFAULT_ITEMS = [
     dateAdded: "2026-05-10"
   },
   {
-    id: "ego-desk-mat",
-    title: "Merino Wool Desk Mat",
+    id: "comfe-desk-mat",
+    title: "comfe Merino Desk Mat",
     category: "Desk Organizers",
     price: 49,
     shortDescription: "Premium double-layered merino wool felt desk pad with non-slip cork backing.",
-    fullDescription: "Bring warmth and texture to your workspace. The Merino Wool Desk Mat provides a cozy surface that protects your desk and improves mouse tracking. Sourced from 100% natural wool, it offers water resistance, noise reduction, and a luxury feel. Finished with a non-slip natural cork backing.",
+    fullDescription: "Bring warmth and texture to your workspace. The comfe Merino Desk Mat provides a cozy surface that protects your desk and improves mouse tracking. Sourced from 100% natural wool, it offers water resistance, noise reduction, and a luxury feel. Finished with a non-slip natural cork backing.",
     specs: [
       "Material: 100% Merino Wool Felt & Cork",
       "Thickness: 4mm",
@@ -50,8 +50,8 @@ const DEFAULT_ITEMS = [
     dateAdded: "2026-05-15"
   },
   {
-    id: "wooden-monitor-stand",
-    title: "Walnut Desk Shelf Riser",
+    id: "comfe-monitor-stand",
+    title: "comfe Desk Shelf Riser",
     category: "Desk Organizers",
     price: 129,
     shortDescription: "Ergonomic monitor riser crafted from solid walnut with powder-coated steel brackets.",
@@ -66,12 +66,12 @@ const DEFAULT_ITEMS = [
     dateAdded: "2026-05-20"
   },
   {
-    id: "ambient-neon-glow",
-    title: "Aura Ambient Glow Tube",
+    id: "comfe-neon-glow",
+    title: "comfe Ambient Glow Tube",
     category: "Lighting",
     price: 99,
     shortDescription: "Retro-modern RGB tube light with custom preset ambient sequences.",
-    fullDescription: "Add cinematic lighting to your desktop setup. The Aura Ambient Glow Tube utilizes retro nixie-tube aesthetics combined with state-of-the-art addressable LEDs. Toggle between 16 million colors and 20 custom animation modes. Syncs with music or desk sounds using an integrated high-sensitivity microphone.",
+    fullDescription: "Add cinematic lighting to your desktop setup. The comfe Ambient Glow Tube utilizes retro nixie-tube aesthetics combined with state-of-the-art addressable LEDs. Toggle between 16 million colors and 20 custom animation modes. Syncs with music or desk sounds using an integrated high-sensitivity microphone.",
     specs: [
       "LEDs: 60 Addressable RGB ICs",
       "Base Material: CNC-anodized Aluminum",
@@ -82,12 +82,12 @@ const DEFAULT_ITEMS = [
     dateAdded: "2026-05-25"
   },
   {
-    id: "ergo-chair-cushion",
-    title: "Ego Lumbar Support",
+    id: "comfe-chair-cushion",
+    title: "comfe Lumbar Support",
     category: "Accessories",
     price: 39,
     shortDescription: "Memory foam lumbar cushion with premium mesh cover for desk chairs.",
-    fullDescription: "Enhance your sitting comfort during long coding or design sessions. The Ego Ergonomic Lumbar Support is engineered to support the natural curve of your lower back. Filled with high-density cooling gel memory foam, it maintains its shape while regulating heat. Features dual adjustable straps to lock onto any desk chair.",
+    fullDescription: "Enhance your sitting comfort during long coding or design sessions. The comfe Lumbar Support is engineered to support the natural curve of your lower back. Filled with high-density cooling gel memory foam, it maintains its shape while regulating heat. Features dual adjustable straps to lock onto any desk chair.",
     specs: [
       "Filling: Cooling Gel Memory Foam",
       "Cover: Breathable 3D Mesh (Washable)",
@@ -99,7 +99,7 @@ const DEFAULT_ITEMS = [
   }
 ];
 
-const ITEMS_KEY = "aura_space_items";
+const ITEMS_KEY = "comfe_space_items";
 
 // Helper to check if code is executing in browser
 const isClient = () => typeof window !== "undefined";
@@ -133,7 +133,7 @@ export const addItem = (newItem) => {
   const items = getItems();
   const createdItem = {
     ...newItem,
-    id: newItem.id || `aura-${Math.random().toString(36).substring(2, 9)}`,
+    id: newItem.id || `comfe-${Math.random().toString(36).substring(2, 9)}`,
     price: Number(newItem.price) || 0,
     specs: newItem.specs || [],
     dateAdded: new Date().toISOString().split("T")[0]

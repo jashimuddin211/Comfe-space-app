@@ -85,38 +85,38 @@ function AddItemForm() {
 
   return (
     <div className="container mx-auto px-6 py-12 flex justify-center">
-      <div className="card glass-card w-full max-w-2xl p-8 relative">
-        <h1 className="text-2xl md:text-3xl font-extrabold text-white mb-2 font-title">
-          Add New <span className="text-gradient">Accessory</span>
+      <div className="card glass-card w-full max-w-2xl p-8 relative rounded">
+        <h1 className="text-xl md:text-2xl font-extrabold text-white mb-1.5 uppercase tracking-wide">
+          Add New <span className="text-brand-blue">Accessory</span>
         </h1>
-        <p className="text-xs text-text-gray mb-8">
-          Upload details for a custom workstation accessory to include it in the active batch catalog.
+        <p className="text-[11px] text-text-gray mb-6 leading-relaxed">
+          Log details for a custom comfeSpace workspace accessory. Specifications will be parsed and listed in the catalog.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div className="grid grid-2 gap-4">
             {/* Title */}
             <div className="form-group">
-              <label className="form-label">Title</label>
+              <label className="form-label text-[10px]">Accessory Title</label>
               <input
                 type="text"
-                placeholder="e.g. Aura Mechanical Numpad"
+                placeholder="e.g. comfe Numpad Layout"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
                 disabled={submitting}
-                className={`form-input ${errors.title ? "border-red-500/50" : ""}`}
+                className={`form-input text-xs ${errors.title ? "border-red-500/50 focus:border-red-500/50" : ""}`}
               />
               {errors.title && <p className="form-error">{errors.title}</p>}
             </div>
 
             {/* Category */}
             <div className="form-group">
-              <label className="form-label">Category</label>
+              <label className="form-label text-[10px]">Category Group</label>
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
                 disabled={submitting}
-                className="form-select cursor-pointer"
+                className="form-select text-xs cursor-pointer"
               >
                 {categories.map((cat) => (
                   <option key={cat} value={cat} className="bg-bg-card">
@@ -130,7 +130,7 @@ function AddItemForm() {
           <div className="grid grid-2 gap-4">
             {/* Price */}
             <div className="form-group">
-              <label className="form-label">Price ($)</label>
+              <label className="form-label text-[10px]">Unit Price ($)</label>
               <input
                 type="number"
                 placeholder="e.g. 89"
@@ -139,38 +139,38 @@ function AddItemForm() {
                 disabled={submitting}
                 min="0"
                 step="0.01"
-                className={`form-input ${errors.price ? "border-red-500/50" : ""}`}
+                className={`form-input text-xs ${errors.price ? "border-red-500/50 focus:border-red-500/50" : ""}`}
               />
               {errors.price && <p className="form-error">{errors.price}</p>}
             </div>
 
             {/* Image URL */}
             <div className="form-group">
-              <label className="form-label">Image URL (Optional)</label>
+              <label className="form-label text-[10px]">Image URL (Optional)</label>
               <input
                 type="url"
                 placeholder="e.g. https://images.unsplash.com/..."
                 value={imageUrl}
                 onChange={(e) => setImageUrl(e.target.value)}
                 disabled={submitting}
-                className="form-input"
+                className="form-input text-xs"
               />
             </div>
           </div>
 
           {/* Short Description */}
           <div className="form-group">
-            <label className="form-label">Short Description (1-2 lines)</label>
+            <label className="form-label text-[10px]">Short Summary (Catalog view)</label>
             <input
               type="text"
               placeholder="e.g. A gorgeous matching mechanical numpad crafted in brass and walnut."
               value={shortDesc}
               onChange={(e) => setShortDesc(e.target.value)}
               disabled={submitting}
-              className={`form-input ${errors.shortDesc ? "border-red-500/50" : ""}`}
+              className={`form-input text-xs ${errors.shortDesc ? "border-red-500/50 focus:border-red-500/50" : ""}`}
             />
-            <div className="flex justify-between mt-1 text-[10px] text-text-muted">
-              <span>Must be brief for list cards.</span>
+            <div className="flex justify-between mt-0.5 text-[9px] text-text-muted font-mono">
+              <span>Short description for listing cards.</span>
               <span>{shortDesc.length}/100</span>
             </div>
             {errors.shortDesc && <p className="form-error">{errors.shortDesc}</p>}
@@ -178,50 +178,50 @@ function AddItemForm() {
 
           {/* Full Description */}
           <div className="form-group">
-            <label className="form-label">Full Description</label>
+            <label className="form-label text-[10px]">Detailed description</label>
             <textarea
               placeholder="Provide an in-depth story, detailing the ergonomic benefits, materials, construction, and specifications of this workspace accessory."
               value={fullDesc}
               onChange={(e) => setFullDesc(e.target.value)}
               disabled={submitting}
-              className={`form-textarea ${errors.fullDesc ? "border-red-500/50" : ""}`}
+              className={`form-textarea text-xs ${errors.fullDesc ? "border-red-500/50 focus:border-red-500/50" : ""}`}
             />
             {errors.fullDesc && <p className="form-error">{errors.fullDesc}</p>}
           </div>
 
           {/* Specs List */}
           <div className="form-group">
-            <label className="form-label">Specifications (One per line)</label>
+            <label className="form-label text-[10px]">Specifications (One key-value pair per line)</label>
             <textarea
-              placeholder="e.g.&#10;Key Switches: Aura Linear Silent&#10;Body Casing: Brass & Oak&#10;Weight: 450g&#10;Cable: Braided 1.5m USB-C"
+              placeholder="e.g.&#10;Key Switches: comfe Linear Silent&#10;Body Casing: Brass & Oak&#10;Weight: 450g&#10;Cable: Braided 1.5m USB-C"
               value={specsText}
               onChange={(e) => setSpecsText(e.target.value)}
               disabled={submitting}
-              className="form-textarea h-[100px] font-mono text-xs"
+              className="form-textarea h-[100px] font-mono text-[11px]"
             />
-            <p className="text-[10px] text-text-muted mt-1">
-              Enter key specifications using **Key: Value** format on each line.
+            <p className="text-[9px] text-text-muted mt-0.5 font-mono">
+              Enter details using the **Key: Value** format on individual lines.
             </p>
           </div>
 
           {/* Buttons */}
-          <div className="flex items-center justify-end gap-4 pt-4 border-t border-white/5">
+          <div className="flex items-center justify-end gap-3 pt-3 border-t border-white/5">
             <button
               type="button"
               onClick={() => router.push("/items")}
               disabled={submitting}
-              className="btn btn-secondary px-6 py-2.5 text-sm"
+              className="btn btn-secondary px-5 py-2 text-xs"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="btn btn-primary px-8 py-2.5 text-sm font-semibold flex items-center gap-2"
+              className="btn btn-primary px-6 py-2 text-xs font-semibold flex items-center gap-1.5 cursor-pointer"
             >
               {submitting ? (
                 <>
-                  <span className="spinner text-white w-4 h-4"></span>
+                  <span className="spinner text-bg-dark w-3.5 h-3.5"></span>
                   Uploading...
                 </>
               ) : (

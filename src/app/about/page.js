@@ -3,76 +3,76 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div className="container mx-auto px-6 py-16">
+    <div className="container mx-auto px-6 py-12">
       {/* Title */}
-      <div className="max-w-3xl mb-16">
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 font-title">
-          Designed for <span className="text-gradient">High-Bandwidth Focus</span>
+      <div className="max-w-3xl mb-12">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4 font-sans uppercase">
+          comfeSpace <span className="text-brand-blue">Design Log</span>
         </h1>
-        <p className="text-text-gray text-lg md:text-xl leading-relaxed">
-          At Aura Space, we believe your physical workspace is a direct projection of your mental clarity. Our goal is to craft premium, tactile instruments that turn daily desktop environments into beautiful zones of deep cognitive work.
+        <p className="text-text-gray text-sm md:text-base leading-relaxed">
+          comfeSpace designs and manufactures physical equipment configurations designed for deep developer focus. We prioritize geometric discipline, material performance, and modularity to help optimize workspaces.
         </p>
       </div>
 
       {/* Grid splits image and text */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
-        <div className="aspect-[16/10] w-full rounded-2xl overflow-hidden border border-white/5 shadow-2xl bg-bg-card">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-16">
+        <div className="aspect-[16/10] w-full rounded-sm overflow-hidden border border-white/10 bg-bg-card">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://images.unsplash.com/photo-1593642532400-2682810df593?q=80&w=800&auto=format&fit=crop"
             alt="Workspace setup close-up"
-            className="object-cover w-full h-full filter brightness-90"
+            className="object-cover w-full h-full filter brightness-95"
           />
         </div>
 
-        <div className="space-y-6">
-          <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight font-title">
-            The Craftsmanship Principle
+        <div className="space-y-4">
+          <h2 className="text-lg md:text-xl font-bold text-white uppercase tracking-wider">
+            Material Rigidity & Utility
           </h2>
-          <p className="text-text-gray text-sm md:text-base leading-relaxed">
-            Every keyboard casing, desk mat, and ambient lighting piece is designed from the ground up. We select materials based on their longevity, weight, tactility, and visual warmth. American Walnut, top-grain leather, solid anodized aluminum, and merino wool felt form the foundation of our design palette.
+          <p className="text-text-gray text-xs md:text-sm leading-relaxed">
+            Every keyboard frame, monitor light bar, and desktop tray is engineered to support professional daily routines. We select materials based on their weight, longevity, thermal resistance, and acoustic properties. Anodized aluminum, American Walnut, natural wool, and high-density cork form the foundation of our materials catalog.
           </p>
-          <p className="text-text-gray text-sm md:text-base leading-relaxed">
-            By avoiding mass-market plastic injections and concentrating on modular, repairable structures, we aim to build desktop items that age gracefully and accompany you through decades of career milestones.
+          <p className="text-text-gray text-xs md:text-sm leading-relaxed">
+            By avoiding complex visual decorations and focusing on clean geometry and modular replacement paths, we make workspace accessories that serve you through decades of career milestones.
           </p>
         </div>
       </div>
 
       {/* Core Values grid */}
-      <div className="border-t border-white/5 pt-16 mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 tracking-tight font-title">
-          Our Workspace Values
+      <div className="border-t border-white/5 pt-12 mb-12">
+        <h2 className="text-lg md:text-xl font-bold text-white mb-8 uppercase tracking-wide">
+          Core Values
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="card glass-card">
-            <h3 className="text-lg font-bold text-white font-title mb-3">Tactility & Feedback</h3>
-            <p className="text-xs text-text-gray leading-relaxed">
-              Every press, turn, and touch should yield pleasant, precise tactile response. Satisfying mechanical feedback helps define rhythm and enhances concentration during intensive workflows.
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="card glass-card rounded p-5">
+            <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-2">Mechanical Feedback</h3>
+            <p className="text-[11px] text-text-gray leading-relaxed">
+              Every key switch, knob, and mounting rail is designed to yield clean, precise tactile response. Mechanical feedback establishes a steady rhythm and supports focus during active programming sessions.
             </p>
           </div>
-          <div className="card glass-card">
-            <h3 className="text-lg font-bold text-white font-title mb-3">Visual Tranquility</h3>
-            <p className="text-xs text-text-gray leading-relaxed">
-              Mess and clutter trigger subconscious cognitive load. We design integrated layouts, hidden routing paths, and modular organizers to create absolute desktop cleanliness.
+          <div className="card glass-card rounded p-5">
+            <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-2">Visual Discipline</h3>
+            <p className="text-[11px] text-text-gray leading-relaxed">
+              Visual clutter triggers cognitive load. We configure integrated cable routing, structured desktop layers, and low-profile desk shelves to maximize clear workspace area.
             </p>
           </div>
-          <div className="card glass-card">
-            <h3 className="text-lg font-bold text-white font-title mb-3">Modular Lifespan</h3>
-            <p className="text-xs text-text-gray leading-relaxed">
-              Things should be built to last. Our hot-swappable mechanical keyboards and aluminum brackets are designed for quick upgrades, clean maintenance, and hardware customization.
+          <div className="card glass-card rounded p-5">
+            <h3 className="text-xs font-bold text-white uppercase tracking-wider mb-2">Modular Upgrades</h3>
+            <p className="text-[11px] text-text-gray leading-relaxed">
+              Fixtures should adapt. Our mechanical keyboard casings and desk mounts are constructed for quick assembly, component replacement, and custom expansion configurations.
             </p>
           </div>
         </div>
       </div>
 
       {/* CTA Box */}
-      <div className="card glass-card text-center p-10 md:p-14 bg-gradient-to-r from-brand-purple/10 to-transparent flex flex-col items-center max-w-4xl mx-auto mt-20">
-        <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">Ready to elevate your desk?</h2>
-        <p className="text-text-gray text-sm md:text-base max-w-lg mb-8 leading-relaxed">
-          Discover our active batches of desk accessories and find the missing piece in your home workspace setup.
+      <div className="card glass-card text-center p-8 md:p-10 bg-bg-card flex flex-col items-center max-w-2xl mx-auto mt-16 rounded">
+        <h2 className="text-lg md:text-xl font-bold text-white mb-2 uppercase tracking-wide">Structure Your Desk</h2>
+        <p className="text-text-gray text-xs max-w-md mb-6 leading-relaxed">
+          Inspect our catalog of industrial workspace organizers, keyboards, and ambient light bars.
         </p>
-        <Link href="/items" className="btn btn-primary px-8 py-3.5 text-sm font-medium">
-          Shop Workspace Gear
+        <Link href="/items" className="btn btn-primary px-6 py-2.5 text-xs font-semibold">
+          View Collection
         </Link>
       </div>
     </div>

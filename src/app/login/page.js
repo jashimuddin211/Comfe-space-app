@@ -72,10 +72,10 @@ function LoginContent() {
     try {
       if (mode === "login") {
         await login(email, password);
-        showSuccess("Welcome back to Aura Space!");
+        showSuccess("Welcome back to comfeSpace!");
       } else {
         await register(email, password, displayName);
-        showSuccess("Account created! Welcome to Aura Space.");
+        showSuccess("Account created! Welcome to comfeSpace.");
       }
     } catch (err) {
       console.error(err);
@@ -116,43 +116,40 @@ function LoginContent() {
   };
 
   return (
-    <div className="container mx-auto px-6 py-16 flex items-center justify-center min-h-[80vh]">
-      <div className="glass-card w-full max-w-md rounded-2xl border border-white/10 bg-bg-card/70 p-8 shadow-2xl relative overflow-hidden backdrop-blur-xl">
-        {/* Glow Element */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-purple/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-teal/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div className="container mx-auto px-6 py-16 flex items-center justify-center min-h-[75vh]">
+      <div className="glass-card w-full max-w-md rounded border border-white/10 bg-bg-card p-8 shadow-2xl relative overflow-hidden">
         
         {/* Title Header */}
         <div className="text-center mb-8 relative z-10">
           <Link href="/" className="inline-flex items-center gap-2 mb-3 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-purple to-brand-teal flex items-center justify-center font-bold text-lg text-white shadow-md shadow-brand-purple/20 group-hover:scale-105 transition-transform duration-300">
-              A
+            <div className="w-8 h-8 rounded bg-brand-blue flex items-center justify-center font-mono font-bold text-lg text-bg-dark transition-transform duration-300">
+              C
             </div>
-            <span className="font-title font-bold text-xl tracking-tight text-white group-hover:text-brand-purple transition-colors duration-300">
-              Aura<span className="text-brand-teal">Space</span>
+            <span className="font-mono font-bold text-lg tracking-tighter text-white">
+              comfe<span className="text-brand-blue">Space</span>
             </span>
           </Link>
-          <h2 className="text-2xl md:text-3xl font-bold font-title text-white tracking-tight leading-none">
-            {mode === "login" ? "Sign In to Your Space" : "Create Account"}
+          <h2 className="text-xl font-bold uppercase tracking-wide text-white leading-none">
+            {mode === "login" ? "Sign In" : "Register"}
           </h2>
-          <p className="text-xs text-text-gray mt-2 leading-relaxed">
+          <p className="text-[11px] text-text-gray mt-2 leading-relaxed">
             {mode === "login" 
-              ? "Access your workspace selections, orders, and details" 
-              : "Register to custom add and manage your workspace gear"}
+              ? "Access your logged configuration batches and tools" 
+              : "Register to custom log and manage workspace elements"}
           </p>
         </div>
 
         {/* Mock Auth Mode Banner Indicator */}
         {isMock && (
-          <div className="mb-6 p-4 rounded-xl bg-brand-teal/5 border border-brand-teal/20 text-left relative z-10 animate-fade-in">
-            <div className="flex items-start gap-3 text-brand-teal text-xs">
+          <div className="mb-6 p-4 rounded-sm bg-brand-blue/5 border border-brand-blue/15 text-left relative z-10 animate-fade-in font-mono">
+            <div className="flex items-start gap-3 text-brand-blue text-[10px]">
               <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <div>
-                <p className="font-bold uppercase tracking-wider mb-0.5">Mock Auth Mode Active</p>
+                <p className="font-bold uppercase tracking-wider mb-0.5">Mock Auth Active</p>
                 <p className="text-text-gray leading-normal">
-                  No environment configuration found. Feel free to log in with **any** credentials. (Passwords &ge; 6 chars).
+                  Local fallback mode. Log in with **any** credentials. Passwords &ge; 6 characters.
                 </p>
               </div>
             </div>
@@ -171,16 +168,16 @@ function LoginContent() {
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   disabled={submitting}
-                  className={`w-full bg-bg-input/60 border border-white/10 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 text-text-light py-2.5 pl-10 pr-4 rounded-xl text-sm transition-all outline-none ${
-                    errors.displayName ? "border-red-500/50 focus:ring-red-500/10 focus:border-red-500/50" : ""
+                  className={`w-full bg-bg-input border border-white/10 focus:border-brand-blue text-text-light py-2 pl-9 pr-3 rounded text-xs transition-all outline-none ${
+                    errors.displayName ? "border-red-500/50 focus:border-red-500/50" : ""
                   }`}
                 />
-                <svg className="w-4 h-4 text-text-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-3.5 h-3.5 text-text-muted absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
               <div className="min-h-[16px] pl-1">
-                {errors.displayName && <p className="text-[11px] font-medium text-red-400">{errors.displayName}</p>}
+                {errors.displayName && <p className="text-[10px] font-medium text-red-400 font-mono">{errors.displayName}</p>}
               </div>
             </div>
           )}
@@ -195,16 +192,16 @@ function LoginContent() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 disabled={submitting}
-                className={`w-full bg-bg-input/60 border border-white/10 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 text-text-light py-2.5 pl-10 pr-4 rounded-xl text-sm transition-all outline-none ${
-                  errors.email ? "border-red-500/50 focus:ring-red-500/10 focus:border-red-500/50" : ""
+                className={`w-full bg-bg-input border border-white/10 focus:border-brand-blue text-text-light py-2 pl-9 pr-3 rounded text-xs transition-all outline-none ${
+                  errors.email ? "border-red-500/50 focus:border-red-500/50" : ""
                 }`}
               />
-              <svg className="w-4 h-4 text-text-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-3.5 h-3.5 text-text-muted absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
             <div className="min-h-[16px] pl-1">
-              {errors.email && <p className="text-[11px] font-medium text-red-400">{errors.email}</p>}
+              {errors.email && <p className="text-[10px] font-medium text-red-400 font-mono">{errors.email}</p>}
             </div>
           </div>
 
@@ -218,34 +215,34 @@ function LoginContent() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 disabled={submitting}
-                className={`w-full bg-bg-input/60 border border-white/10 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 text-text-light py-2.5 pl-10 pr-10 rounded-xl text-sm transition-all outline-none ${
-                  errors.password ? "border-red-500/50 focus:ring-red-500/10 focus:border-red-500/50" : ""
+                className={`w-full bg-bg-input border border-white/10 focus:border-brand-blue text-text-light py-2 pl-9 pr-9 rounded text-xs transition-all outline-none ${
+                  errors.password ? "border-red-500/50 focus:border-red-500/50" : ""
                 }`}
               />
-              <svg className="w-4 h-4 text-text-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-3.5 h-3.5 text-text-muted absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
               </svg>
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
                 disabled={submitting}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-text-light transition-colors p-1"
+                className="absolute right-2.5 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-text-light transition-colors p-1"
                 aria-label="Toggle Password Visibility"
               >
                 {showPassword ? (
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                   </svg>
                 ) : (
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542 7z" />
                   </svg>
                 )}
               </button>
             </div>
             <div className="min-h-[16px] pl-1">
-              {errors.password && <p className="text-[11px] font-medium text-red-400">{errors.password}</p>}
+              {errors.password && <p className="text-[10px] font-medium text-red-400 font-mono">{errors.password}</p>}
             </div>
           </div>
 
@@ -253,12 +250,12 @@ function LoginContent() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full btn btn-primary py-3 font-semibold text-sm rounded-xl flex items-center justify-center gap-2 relative mt-4 shadow-lg shadow-brand-purple/20 hover:shadow-brand-purple/40 hover:translate-y-[-1px] transition-all cursor-pointer"
+            className="w-full btn btn-primary py-2.5 font-bold text-xs uppercase tracking-wider rounded relative mt-2 cursor-pointer"
           >
             {submitting ? (
               <>
-                <span className="spinner text-white w-4 h-4"></span>
-                Verifying Credentials...
+                <span className="spinner text-bg-dark w-3.5 h-3.5"></span>
+                Verifying...
               </>
             ) : mode === "login" ? (
               "Sign In"
@@ -269,9 +266,9 @@ function LoginContent() {
         </form>
 
         {/* Separator */}
-        <div className="relative flex py-5 items-center z-10">
+        <div className="relative flex py-4 items-center z-10">
           <div className="flex-grow border-t border-white/5"></div>
-          <span className="flex-shrink mx-4 text-xs uppercase tracking-widest text-text-muted select-none">Or</span>
+          <span className="flex-shrink mx-3 text-[10px] uppercase tracking-widest text-text-muted font-mono">Or</span>
           <div className="flex-grow border-t border-white/5"></div>
         </div>
 
@@ -279,9 +276,9 @@ function LoginContent() {
         <button
           onClick={handleGoogleLogin}
           disabled={submitting}
-          className="w-full bg-white/5 hover:bg-white/10 active:scale-[0.99] text-text-light font-medium py-3 px-4 rounded-xl flex items-center justify-center gap-3 border border-white/5 hover:border-white/15 text-sm transition-all duration-200 relative z-10 cursor-pointer"
+          className="w-full btn btn-secondary py-2.5 font-semibold text-xs uppercase tracking-wider rounded flex items-center justify-center gap-2 border border-white/5 hover:border-white/10 relative z-10 cursor-pointer"
         >
-          <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
+          <svg className="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24">
             <path
               fill="#4285F4"
               d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.9h6.69c-.29 1.5-.1.14-.99 3.01l3.07 2.38c1.8-1.66 2.97-4.11 2.97-7.22z"
@@ -303,19 +300,19 @@ function LoginContent() {
         </button>
 
         {/* Toggler */}
-        <div className="text-center mt-6 relative z-10">
+        <div className="text-center mt-5 relative z-10 font-mono">
           <button
             onClick={toggleMode}
             disabled={submitting}
-            className="text-xs text-text-gray hover:text-brand-purple hover:underline transition-all cursor-pointer bg-transparent border-0 outline-none"
+            className="text-[10px] text-text-gray hover:text-brand-blue hover:underline transition-all cursor-pointer bg-transparent border-0 outline-none"
           >
             {mode === "login" ? (
               <>
-                New to Aura Space? <span className="font-semibold text-white hover:text-brand-purple">Register here</span>
+                New to comfeSpace? <span className="font-semibold text-white hover:text-brand-blue">[Register here]</span>
               </>
             ) : (
               <>
-                Already have an account? <span className="font-semibold text-white hover:text-brand-purple">Sign in here</span>
+                Have an account? <span className="font-semibold text-white hover:text-brand-blue">[Sign in here]</span>
               </>
             )}
           </button>
@@ -329,10 +326,10 @@ export default function Login() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-[80vh] flex flex-col items-center justify-center gap-4">
-          <div className="spinner text-brand-purple"></div>
-          <p className="text-sm text-text-gray animate-pulse font-title">
-            Loading Security Gate...
+        <div className="min-h-[75vh] flex flex-col items-center justify-center gap-4">
+          <div className="spinner text-brand-blue"></div>
+          <p className="text-xs text-text-gray animate-pulse font-mono uppercase tracking-widest">
+            Loading security...
           </p>
         </div>
       }
