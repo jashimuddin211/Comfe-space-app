@@ -22,6 +22,7 @@ function LoginContent() {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   
   // UI States
   const [submitting, setSubmitting] = useState(false);
@@ -111,103 +112,153 @@ function LoginContent() {
     setEmail("");
     setPassword("");
     setDisplayName("");
+    setShowPassword(false);
   };
 
   return (
-    <div className="container mx-auto px-6 py-16 flex items-center justify-center min-h-[75vh]">
-      <div className="card glass-card w-full max-w-md p-8 shadow-2xl relative overflow-hidden">
+    <div className="container mx-auto px-6 py-16 flex items-center justify-center min-h-[80vh]">
+      <div className="glass-card w-full max-w-md rounded-2xl border border-white/10 bg-bg-card/70 p-8 shadow-2xl relative overflow-hidden backdrop-blur-xl">
         {/* Glow Element */}
-        <div className="absolute top-0 right-0 w-24 h-24 bg-brand-purple/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-purple/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-brand-teal/10 rounded-full blur-3xl pointer-events-none"></div>
         
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-purple to-brand-teal flex items-center justify-center font-bold text-lg text-white shadow-md">
+        {/* Title Header */}
+        <div className="text-center mb-8 relative z-10">
+          <Link href="/" className="inline-flex items-center gap-2 mb-3 group">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-purple to-brand-teal flex items-center justify-center font-bold text-lg text-white shadow-md shadow-brand-purple/20 group-hover:scale-105 transition-transform duration-300">
               A
             </div>
-            <span className="font-title font-bold text-xl tracking-tight text-white">
+            <span className="font-title font-bold text-xl tracking-tight text-white group-hover:text-brand-purple transition-colors duration-300">
               Aura<span className="text-brand-teal">Space</span>
             </span>
           </Link>
-          <h2 className="text-2xl font-bold font-title text-white">
-            {mode === "login" ? "Sign In to Your Space" : "Create Workspace Account"}
+          <h2 className="text-2xl md:text-3xl font-bold font-title text-white tracking-tight leading-none">
+            {mode === "login" ? "Sign In to Your Space" : "Create Account"}
           </h2>
-          <p className="text-xs text-text-gray mt-1.5">
-            {mode === "login" ? "Access your curated collections and orders" : "Register to add and manage your workspace items"}
+          <p className="text-xs text-text-gray mt-2 leading-relaxed">
+            {mode === "login" 
+              ? "Access your workspace selections, orders, and details" 
+              : "Register to custom add and manage your workspace gear"}
           </p>
         </div>
 
         {/* Mock Auth Mode Banner Indicator */}
         {isMock && (
-          <div className="mb-6 p-3.5 rounded-lg bg-brand-teal/5 border border-brand-teal/20 text-left">
-            <div className="flex items-start gap-2.5 text-brand-teal text-xs">
+          <div className="mb-6 p-4 rounded-xl bg-brand-teal/5 border border-brand-teal/20 text-left relative z-10 animate-fade-in">
+            <div className="flex items-start gap-3 text-brand-teal text-xs">
               <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <div>
                 <p className="font-bold uppercase tracking-wider mb-0.5">Mock Auth Mode Active</p>
                 <p className="text-text-gray leading-normal">
-                  Firebase configuration not found. You can register/login with **any** credentials. Passwords must be &ge; 6 characters.
+                  No environment configuration found. Feel free to log in with **any** credentials. (Passwords &ge; 6 chars).
                 </p>
               </div>
             </div>
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 relative z-10">
           {/* Full Name (Register Mode Only) */}
           {mode === "register" && (
-            <div className="form-group">
-              <label className="form-label text-xs uppercase tracking-wider text-text-gray">Full Name</label>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                value={displayName}
-                onChange={(e) => setDisplayName(e.target.value)}
-                disabled={submitting}
-                className={`form-input text-sm ${errors.displayName ? "border-red-500/50" : ""}`}
-              />
-              {errors.displayName && <p className="form-error">{errors.displayName}</p>}
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-semibold uppercase tracking-wider text-text-gray pl-1">Full Name</label>
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="John Doe"
+                  value={displayName}
+                  onChange={(e) => setDisplayName(e.target.value)}
+                  disabled={submitting}
+                  className={`w-full bg-bg-input/60 border border-white/10 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 text-text-light py-2.5 pl-10 pr-4 rounded-xl text-sm transition-all outline-none ${
+                    errors.displayName ? "border-red-500/50 focus:ring-red-500/10 focus:border-red-500/50" : ""
+                  }`}
+                />
+                <svg className="w-4 h-4 text-text-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <div className="min-h-[16px] pl-1">
+                {errors.displayName && <p className="text-[11px] font-medium text-red-400">{errors.displayName}</p>}
+              </div>
             </div>
           )}
 
           {/* Email Input */}
-          <div className="form-group">
-            <label className="form-label text-xs uppercase tracking-wider text-text-gray">Email Address</label>
-            <input
-              type="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={submitting}
-              className={`form-input text-sm ${errors.email ? "border-red-500/50" : ""}`}
-            />
-            {errors.email && <p className="form-error">{errors.email}</p>}
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold uppercase tracking-wider text-text-gray pl-1">Email Address</label>
+            <div className="relative">
+              <input
+                type="email"
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={submitting}
+                className={`w-full bg-bg-input/60 border border-white/10 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 text-text-light py-2.5 pl-10 pr-4 rounded-xl text-sm transition-all outline-none ${
+                  errors.email ? "border-red-500/50 focus:ring-red-500/10 focus:border-red-500/50" : ""
+                }`}
+              />
+              <svg className="w-4 h-4 text-text-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div className="min-h-[16px] pl-1">
+              {errors.email && <p className="text-[11px] font-medium text-red-400">{errors.email}</p>}
+            </div>
           </div>
 
           {/* Password Input */}
-          <div className="form-group">
-            <label className="form-label text-xs uppercase tracking-wider text-text-gray">Password</label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={submitting}
-              className={`form-input text-sm ${errors.password ? "border-red-500/50" : ""}`}
-            />
-            {errors.password && <p className="form-error">{errors.password}</p>}
+          <div className="flex flex-col gap-1.5">
+            <label className="text-xs font-semibold uppercase tracking-wider text-text-gray pl-1">Password</label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={submitting}
+                className={`w-full bg-bg-input/60 border border-white/10 focus:border-brand-purple focus:ring-2 focus:ring-brand-purple/20 text-text-light py-2.5 pl-10 pr-10 rounded-xl text-sm transition-all outline-none ${
+                  errors.password ? "border-red-500/50 focus:ring-red-500/10 focus:border-red-500/50" : ""
+                }`}
+              />
+              <svg className="w-4 h-4 text-text-muted absolute left-3.5 top-1/2 transform -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                disabled={submitting}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-muted hover:text-text-light transition-colors p-1"
+                aria-label="Toggle Password Visibility"
+              >
+                {showPassword ? (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                  </svg>
+                ) : (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+            <div className="min-h-[16px] pl-1">
+              {errors.password && <p className="text-[11px] font-medium text-red-400">{errors.password}</p>}
+            </div>
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
             disabled={submitting}
-            className="btn btn-primary w-full py-3 mt-2 font-medium flex items-center justify-center gap-2"
+            className="w-full btn btn-primary py-3 font-semibold text-sm rounded-xl flex items-center justify-center gap-2 relative mt-4 shadow-lg shadow-brand-purple/20 hover:shadow-brand-purple/40 hover:translate-y-[-1px] transition-all cursor-pointer"
           >
             {submitting ? (
               <>
                 <span className="spinner text-white w-4 h-4"></span>
-                Processing...
+                Verifying Credentials...
               </>
             ) : mode === "login" ? (
               "Sign In"
@@ -218,9 +269,9 @@ function LoginContent() {
         </form>
 
         {/* Separator */}
-        <div className="relative flex py-5 items-center">
+        <div className="relative flex py-5 items-center z-10">
           <div className="flex-grow border-t border-white/5"></div>
-          <span className="flex-shrink mx-4 text-xs uppercase tracking-widest text-text-muted">Or</span>
+          <span className="flex-shrink mx-4 text-xs uppercase tracking-widest text-text-muted select-none">Or</span>
           <div className="flex-grow border-t border-white/5"></div>
         </div>
 
@@ -228,9 +279,9 @@ function LoginContent() {
         <button
           onClick={handleGoogleLogin}
           disabled={submitting}
-          className="btn btn-secondary w-full py-2.5 font-medium flex items-center justify-center gap-2.5 border border-white/5 hover:border-white/15 text-sm"
+          className="w-full bg-white/5 hover:bg-white/10 active:scale-[0.99] text-text-light font-medium py-3 px-4 rounded-xl flex items-center justify-center gap-3 border border-white/5 hover:border-white/15 text-sm transition-all duration-200 relative z-10 cursor-pointer"
         >
-          <svg className="w-4 h-4" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24">
             <path
               fill="#4285F4"
               d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v3.9h6.69c-.29 1.5-.1.14-.99 3.01l3.07 2.38c1.8-1.66 2.97-4.11 2.97-7.22z"
@@ -252,18 +303,19 @@ function LoginContent() {
         </button>
 
         {/* Toggler */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-6 relative z-10">
           <button
             onClick={toggleMode}
-            className="text-xs text-text-gray hover:text-brand-purple transition-colors cursor-pointer"
+            disabled={submitting}
+            className="text-xs text-text-gray hover:text-brand-purple hover:underline transition-all cursor-pointer bg-transparent border-0 outline-none"
           >
             {mode === "login" ? (
               <>
-                New to Aura Space? <span className="font-semibold underline">Register here</span>
+                New to Aura Space? <span className="font-semibold text-white hover:text-brand-purple">Register here</span>
               </>
             ) : (
               <>
-                Already have an account? <span className="font-semibold underline">Sign in here</span>
+                Already have an account? <span className="font-semibold text-white hover:text-brand-purple">Sign in here</span>
               </>
             )}
           </button>
@@ -277,7 +329,7 @@ export default function Login() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4">
+        <div className="min-h-[80vh] flex flex-col items-center justify-center gap-4">
           <div className="spinner text-brand-purple"></div>
           <p className="text-sm text-text-gray animate-pulse font-title">
             Loading Security Gate...
