@@ -19,12 +19,16 @@ function CatalogContent() {
 
   // Sync category state with query parameter if it changes
   useEffect(() => {
-    setSelectedCategory(initialCategory);
+    Promise.resolve().then(() => {
+      setSelectedCategory(prev => prev !== initialCategory ? initialCategory : prev);
+    });
   }, [initialCategory]);
 
   // Load items on mount
   useEffect(() => {
-    setItems(getItems());
+    Promise.resolve().then(() => {
+      setItems(getItems());
+    });
   }, []);
 
   // Filter Categories list
@@ -34,8 +38,8 @@ function CatalogContent() {
   const filteredItems = items
     .filter((item) => {
       const matchesSearch =
-        item.title.toLowerCase().includes(search.toLowerCase()) ||
-        item.shortDescription.toLowerCase().includes(search.toLowerCase());
+        (item.title || "").toLowerCase().includes(search.toLowerCase()) ||
+        (item.shortDescription || "").toLowerCase().includes(search.toLowerCase());
       
       const matchesCategory =
         selectedCategory === "All" || item.category === selectedCategory;

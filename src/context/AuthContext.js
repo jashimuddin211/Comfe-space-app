@@ -17,17 +17,17 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  // For Mock Mode State
   const [mockUsers, setMockUsers] = useState([]);
 
+  // Load mock users on mount
   useEffect(() => {
-    // Load registered mock users from localStorage if on client
     if (typeof window !== "undefined") {
       const stored = localStorage.getItem("aura_mock_registered_users");
       if (stored) {
         try {
-          setMockUsers(JSON.parse(stored));
+          Promise.resolve().then(() => {
+            setMockUsers(JSON.parse(stored));
+          });
         } catch (e) {
           console.error(e);
         }
@@ -53,18 +53,21 @@ export const AuthProvider = ({ children }) => {
       });
       return () => unsubscribe();
     } else {
-      // Mock Mode: check sessionStorage for logged-in user
       if (typeof window !== "undefined") {
         const sessionUser = sessionStorage.getItem("aura_mock_logged_in_user");
         if (sessionUser) {
           try {
-            setUser(JSON.parse(sessionUser));
+            Promise.resolve().then(() => {
+              setUser(JSON.parse(sessionUser));
+            });
           } catch (e) {
             console.error(e);
           }
         }
       }
-      setLoading(false);
+      Promise.resolve().then(() => {
+        setLoading(false);
+      });
     }
   }, []);
 

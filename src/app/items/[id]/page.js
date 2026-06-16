@@ -15,18 +15,23 @@ export default function ItemDetails({ params }) {
 
   useEffect(() => {
     if (id) {
-      const foundItem = getItemById(id);
-      setItem(foundItem);
-      
-      if (foundItem) {
-        // Find related items (same category, exclude current)
-        const allItems = getItems();
-        const relatedItems = allItems
-          .filter((i) => i.category === foundItem.category && i.id !== foundItem.id)
-          .slice(0, 3);
-        setRelated(relatedItems);
+      if (typeof window !== "undefined") {
+        window.scrollTo(0, 0);
       }
-      setLoading(false);
+      Promise.resolve().then(() => {
+        const foundItem = getItemById(id);
+        setItem(foundItem);
+        
+        if (foundItem) {
+          // Find related items (same category, exclude current)
+          const allItems = getItems();
+          const relatedItems = allItems
+            .filter((i) => i.category === foundItem.category && i.id !== foundItem.id)
+            .slice(0, 3);
+          setRelated(relatedItems);
+        }
+        setLoading(false);
+      });
     }
   }, [id]);
 

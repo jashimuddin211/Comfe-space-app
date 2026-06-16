@@ -30,7 +30,9 @@ function LoginContent() {
 
   // Sync mode if query params change
   useEffect(() => {
-    setMode(initialMode);
+    Promise.resolve().then(() => {
+      setMode(prev => prev !== initialMode ? initialMode : prev);
+    });
   }, [initialMode]);
 
   // Redirect if user is already logged in

@@ -19,7 +19,7 @@ export default function ProtectedRoute({ children }) {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4">
-        <div className="spinner text-brand-purple"></div>
+        <div className="spinner text-brand-blue"></div>
         <p className="text-sm text-text-gray animate-pulse font-title">
           Syncing session...
         </p>

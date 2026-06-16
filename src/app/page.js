@@ -9,8 +9,10 @@ export default function Home() {
 
   useEffect(() => {
     // Load first 3 items as featured products
-    const items = getItems();
-    setFeaturedItems(items.slice(0, 3));
+    Promise.resolve().then(() => {
+      const items = getItems();
+      setFeaturedItems(items.slice(0, 3));
+    });
   }, []);
 
   const features = [

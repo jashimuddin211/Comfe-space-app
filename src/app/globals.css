@@ -6,9 +6,9 @@
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Monochromatic Industrial Palette */
-  --color-bg-dark: #09090b; /* Zinc 950 */
-  --color-bg-card: #18181b; /* Zinc 900 */
-  --color-bg-input: #27272a; /* Zinc 800 */
+  --color-bg-dark: #16161a; /* Sleek, slightly lighter dark gray */
+  --color-bg-card: #222227; /* Slightly lighter card background */
+  --color-bg-input: #2d2d35; /* Lighter input background */
   
   --color-text-light: #f4f4f5; /* Zinc 100 */
   --color-text-gray: #a1a1aa; /* Zinc 400 */
@@ -17,8 +17,8 @@
   --color-brand-blue: #3b82f6; /* Steel Blue */
   --color-brand-blue-hover: #2563eb;
   
-  --color-border-card: #27272a; /* Zinc 800 */
-  --color-border-card-hover: #3f3f46; /* Zinc 700 */
+  --color-border-card: #2e2e34; /* Lighter border to match card */
+  --color-border-card-hover: #44444c; /* Lighter border hover */
   
   --animate-fade-in: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   --animate-slide-in: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -75,6 +75,55 @@
 
   .bg-radial-glow {
     display: none; /* Removed noisy background glows */
+  }
+
+  /* Dropdown Menu Styles */
+  .dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    z-index: 100;
+  }
+
+  .dropdown-header {
+    padding: 0.75rem 0.85rem;
+    border-bottom: 1px solid var(--color-border-card);
+    margin-bottom: 0.35rem;
+  }
+
+  .dropdown-user-name {
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  .dropdown-user-email {
+    margin-top: 0.15rem;
+    word-break: break-all;
+  }
+
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 4px;
+    color: var(--color-text-gray);
+    transition: all 0.15s ease;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    text-align: left;
+    width: 100%;
+  }
+
+  .dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--color-text-light);
   }
 }
 

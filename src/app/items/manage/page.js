@@ -11,7 +11,9 @@ function ManageItemsContent() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems(getItems());
+    Promise.resolve().then(() => {
+      setItems(getItems());
+    });
   }, []);
 
   const handleDelete = (id, title) => {
